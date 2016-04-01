@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zeus.iris">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,19 +10,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.zeus.iris.MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name="com.example.zeus.iris.GenreActivity">
-
-
-        </activity>
-        <activity android:name="com.example.zeus.iris.MovieListByGenreActivity"></activity>
+        <activity android:name=".Activities.GenreActivity" />
+        <activity android:name=".Activities.MovieListByGenreActivity" />
+        <activity android:name=".Activities.UserLoginActivity" />
+        <activity android:name=".Activities.GuestLoginActivity" />
+        <activity android:name=".Activities.MovieSearchResultActivity" />
+        <activity android:name=".Activities.MovieDetailActivity"></activity>
     </application>
 
 </manifest>

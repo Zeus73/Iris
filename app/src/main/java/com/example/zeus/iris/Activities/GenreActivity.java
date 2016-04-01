@@ -1,4 +1,4 @@
-package com.example.zeus.iris;
+package com.example.zeus.iris.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.zeus.iris.Genre;
+import com.example.zeus.iris.GenreArrayAdapter;
+import com.example.zeus.iris.GenreDetail;
+import com.example.zeus.iris.Networking.ApiClient;
+import com.example.zeus.iris.R;
 
 import java.util.ArrayList;
 
@@ -38,7 +44,7 @@ public class GenreActivity extends AppCompatActivity {
    lv=(ListView)findViewById(R.id.genreListview);
 
 
-        Call<Genre> call = ApiClient.getInterface().getGenre();
+        Call<Genre> call = ApiClient.getApiInterface().getGenre();
         progressDialog=new ProgressDialog(GenreActivity.this);
         progressDialog.setTitle("Fetching genres");
         progressDialog.setMessage("Wait");

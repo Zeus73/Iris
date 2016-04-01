@@ -1,4 +1,4 @@
-package com.example.zeus.iris;
+package com.example.zeus.iris.Activities;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.example.zeus.iris.Models.RawRequestToken;
 import com.example.zeus.iris.Models.SessionIdClass;
+import com.example.zeus.iris.MovieContract;
 import com.example.zeus.iris.Networking.ApiClient;
+import com.example.zeus.iris.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent i=new Intent();
                     Toast.makeText(MainActivity.this, "Welcome "+sessionObj.userName,
                             Toast.LENGTH_LONG).show();
-                    i.setClass(MainActivity.this, GenreActivity.class);
+                    i.setClass(MainActivity.this, UserLoginActivity.class);
                     startActivity(i);
 
                     //start Tanvi's Activity here
@@ -156,11 +158,9 @@ public class MainActivity extends AppCompatActivity {
                                                                 editor.putString("username", username);
                                                                 editor.commit();
                                                                 Intent i=new Intent();
-
-                                                                //start Tanvi's Activity here
-                                                                Toast.makeText(MainActivity.this, "Tanvi ki activity start karo",
+                                                                Toast.makeText(MainActivity.this, "Welcome "+username,
                                                                         Toast.LENGTH_LONG).show();
-                                                                i.setClass(MainActivity.this, GenreActivity.class);
+                                                                i.setClass(MainActivity.this, UserLoginActivity.class);
                                                                 startActivity(i);
 
                                                             }else{

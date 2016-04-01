@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 
 public class Genre{
-    ArrayList<GenreDetail> genres;
+    public ArrayList<GenreDetail> genres;
 
 }

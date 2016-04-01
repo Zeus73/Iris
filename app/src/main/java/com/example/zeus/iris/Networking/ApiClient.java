@@ -1,5 +1,10 @@
 package com.example.zeus.iris.Networking;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Modifier;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -8,15 +13,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient {
     private static ApiInterface mService;
+    public static ApiInterface getApiInterface()
+    {
+        if(mService==null) {
+            Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT).create();
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://api.themoviedb.org/3/")
+                    .addConverterFactory(GsonConverterFactory
+                            .create(gson)).build();
 
-    public static ApiInterface getApiInterface(){
-        if(mService==null){
-            Retrofit retrofit=new Retrofit.Builder()
-                    .baseUrl("http://api.themoviedb.org/3/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            mService=retrofit.create(ApiInterface.class);
-        }
-        return mService;
+
+            mService = retrofit.create(ApiInterface.class);
+        }   return mService;
+
     }
+
+
 }

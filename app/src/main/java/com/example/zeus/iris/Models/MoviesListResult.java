@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Zeus on 27-Mar-16.
  */
-public class MovieByGenreResults {
+public class MoviesListResult {
    @SerializedName("results")
-   public ArrayList<Movie> genreMovies;
+   public ArrayList<Movie> moviesArrayList;
 }

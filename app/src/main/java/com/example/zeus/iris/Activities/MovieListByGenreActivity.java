@@ -1,4 +1,4 @@
-package com.example.zeus.iris;
+package com.example.zeus.iris.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,8 +9,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zeus.iris.Models.Movie;
-import com.example.zeus.iris.Models.MovieByGenreResults;
+import com.example.zeus.iris.Models.MoviesListResult;
+import com.example.zeus.iris.MovieContract;
+import com.example.zeus.iris.MovieListAdapter;
 import com.example.zeus.iris.Networking.ApiClient;
+import com.example.zeus.iris.R;
 
 import java.util.ArrayList;
 
@@ -35,20 +38,20 @@ public class MovieListByGenreActivity extends AppCompatActivity {
 
         Intent i=getIntent();
         int genreId=i.getIntExtra("genreId", 18);
-        Call<MovieByGenreResults>
+        Call<MoviesListResult>
                 movieListByGenreActivityCall=
-                ApiClient.getApiInterface().getMovieListByGenre(genreId,MovieContract.LoginContract.API_KEY);
+                ApiClient.getApiInterface().getMovieListByGenre(genreId, MovieContract.LoginContract.API_KEY);
         progressDialog.show();
-        movieListByGenreActivityCall.enqueue(new Callback<MovieByGenreResults>() {
+        movieListByGenreActivityCall.enqueue(new Callback<MoviesListResult>() {
             @Override
-            public void onResponse(Call<MovieByGenreResults> call, Response<MovieByGenreResults> response) {
+            public void onResponse(Call<MoviesListResult> call, Response<MoviesListResult> response) {
                 progressDialog.dismiss();
                 if(response.isSuccessful()){
 
                     movieListView=(ListView) findViewById(R.id.movieListByGenreListview);
-                    MovieByGenreResults hell=response.body();
+                    MoviesListResult hell=response.body();
 
-                    movieList=hell.genreMovies;
+                    movieList=hell.moviesArrayList;
 
                     Log.i("Check",movieList.get(1).movieName);
                     adapter=new MovieListAdapter(MovieListByGenreActivity.this,movieList);
@@ -66,7 +69,7 @@ public class MovieListByGenreActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<MovieByGenreResults> call, Throwable t) {
+            public void onFailure(Call<MoviesListResult> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(MovieListByGenreActivity.this, "call failed", Toast.LENGTH_SHORT).show();
 
