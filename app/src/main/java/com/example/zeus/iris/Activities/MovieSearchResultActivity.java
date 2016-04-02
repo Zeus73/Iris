@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class MovieSearchResultActivity extends AppCompatActivity {
 
-    ListView movieListView;
+    private ListView movieListView;
     ArrayAdapter<String> adapter;
     ProgressDialog progressDialog;
     ArrayList<Movie> movieList;

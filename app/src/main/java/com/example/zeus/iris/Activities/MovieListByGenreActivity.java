@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieListByGenreActivity extends AppCompatActivity {
-    ListView movieListView;
+    private ListView movieListView;
     MovieListAdapter adapter;
     ProgressDialog progressDialog;
     ArrayList<Movie> movieList;
@@ -53,14 +55,22 @@ public class MovieListByGenreActivity extends AppCompatActivity {
 
                     movieList=hell.moviesArrayList;
 
-                    Log.i("Check",movieList.get(1).movieName);
                     adapter=new MovieListAdapter(MovieListByGenreActivity.this,movieList);
-                    if(movieListView==null)
-                    {
-                        Toast.makeText(MovieListByGenreActivity.this, "Panga", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                        movieListView.setAdapter(adapter);
+                    movieListView.setAdapter(adapter);
+
+
+                    movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Toast.makeText(MovieListByGenreActivity.this, "jjkxkxn", Toast.LENGTH_SHORT).show();
+                            int movieId = movieList.get(position).movieId;
+                            Log.i("raeched", String.valueOf(movieId));
+                            Intent i = new Intent();
+                            i.setClass(MovieListByGenreActivity.this, MovieDetailActivity.class);
+                            i.putExtra("movieId", movieId);
+                            startActivity(i);
+                        }
+                    });
 
 
                 }else{

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:drawable/dialog_holo_light_frame"
+    android:background="#ffffff"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:baselineAligned="true"
    >
@@ -24,10 +24,10 @@
         android:textColor="#070701"
         android:textColorHighlight="#0e0000"
         android:background="#ffffff"
-        android:capitalize="sentences"
         android:elegantTextHeight="true"
 
-        android:textAlignment="center" />
+        android:textAlignment="center"
+         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0sp"
@@ -43,7 +43,7 @@
         android:textColor="#03050d"
         android:background="@android:color/background_light"
 
-        android:autoText="true" />
+         />
 
 
 </LinearLayout>
